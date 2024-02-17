@@ -47,7 +47,6 @@ Si se desea consumir el servicio del inditex-ms se debe tener en cuenta que este
 curl 'http://{{domain}}:{{port}}/inditex-ms/v1/prices?product_id=35455&brand_id=1&application_date=2020-06-14-16.00.00' \
 --header 'Authorization: Basic aW5kaXRleC1wcmljZTpDYTIzV3ZzMjEy'
 ```
-curl 'http://localhost:8080/v1/prices?product_id=35455&brand_id=12&application_date=2020-06-14-16.00.00'
 
 ### Seguridad
 
