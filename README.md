@@ -7,9 +7,9 @@ Repositorio que contiene el proyecto para Inditex, El proyecto fue desarrollado 
 
 Solucion planteada separando la responsabilidad de los microservicios y manteniendo un límite claro entre la capa de api, dominio y la infraestructura.
 
-* inditex-api: Microservicio encargado de recibir todas las peticiones de los clientes actua como un api-layer
+* `**inditex-api**`: Microservicio encargado de recibir todas las peticiones de los clientes actua como un api-layer
 
-* inditex-ms: Microservicio encargado de manejar la conexion a la base de datos y realizar logica de negocio
+* `**inditex-ms**`: Microservicio encargado de manejar la conexion a la base de datos y realizar logica de negocio
 
 Podrian exisitir otros microservicios como orquestadores que reciban informacion para actualizar precios de los microservicio en ese caso se crearia otro que se comunicaria al inditex-ms ya sea por http o algun broker de mensajeria como kafka o sqs.
 
