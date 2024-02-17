@@ -5,7 +5,15 @@ Repositorio que contiene el proyecto para Inditex, El proyecto fue desarrollado 
 
 ## Arquitectura
 
-Solucion planteada separando la responsabilidad de los microservicios y manteniendo un límite claro entre la capa de api, dominio y la infraestructura.
+Solucion planteada separando la responsabilidad de los microservicios y manteniendo un límite claro entre la capa de api, dominio y la infraestructura. Dentro de cada microservicio se encuentra un endpoint 
+**`http://{{ip_or_domain}}:{{port}}/health`** que nos indica que el servicio se encuentra UP.
+
+```bash
+{
+  "status": "OK"
+}
+```
+
 
 * **`inditex-api`**: Microservicio encargado de recibir todas las peticiones de los clientes actua como un api-layer
 
@@ -27,27 +35,27 @@ Se construyo un basic auth para el microservicio inditex-ms el cual va a tener l
 
 ![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/getPrice.png?raw=true)
 
-## Requirements
+## Requisitos
 
 * Java (JDK 17)
 * Git
 * Gradle
 * Docker
 
-## Common setup
-Clone the repo and install the dependencies.
+## Configuracion
+Clonar el repositorio e instalar las dependencias.
 ```bash
 git clone https://github.com/requenaivan/PruebaTecnicaIvanRequena.git
 ```
 
-## Build
+## Construcción del proyecto
 
-* Run Tests
+* Ejecutar los Tests
 
 ```bash
 ./gradlew check
 ```
-* **Result test inditex-api**
+* **Resultados de los test inditex-api**
 ```bash
 inditex-api/inditex-test/build/reports/tests/test/index.html
 ```
@@ -55,7 +63,7 @@ inditex-api/inditex-test/build/reports/tests/test/index.html
 
 ![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/test_api_price.png?raw=true)
 
-* **Result test inditex-ms**
+* **Resultados de los test inditex-ms**
 ```bash
 inditex-ms/inditex-ms-test/build/reports/tests/test/index.html
 ```
@@ -63,44 +71,44 @@ inditex-ms/inditex-ms-test/build/reports/tests/test/index.html
 
 ![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/test_ms_price.png?raw=true)
 
-* Build the project skipping tests execution
+* Construcción del proyecto omitiendo la ejecución de los test
 
 ```bash
 ./gradlew -x test build 
 ```
 
-* Build the artifact
+* Construir el artefacto
 ```bash
 ./gradlew build 
 ```
 
-# Run locally
-Open project in your IDE, and find class Application and run, in this case run with `application.properties` because the `application-prod.properties` is used by docker o run in production environment with parameters custom.
+# Ejecutar de manera local
+Importar por separado cada carpeta(`inditex-ms` y `inditex-api`) en su IDE preferido y buscar las clases Application y ejecutarlas desde el run del IDE, en esta ejecución busca el archivo  `application.properties` porque el `application-prod.properties` es usado para dockerizar el proyecto o correrlo en ambiente productivo.
 
 
-# Run Docker inditex-ms
+# Ejecutar Docker `inditex-ms`
 
-* Open terminal and move to inditex-ms and run next command line:
+* Abrir la terminal y moverse a la raiz de `inditex-ms` y ejecutar la siguiente linea de comandos.:
 
 ```bash
 docker build --tag 'inditex-ms' . 
 ```
 
-* Run image created:
+* Ejecutar la imagen creada `inditex-ms`:
 ```bash
 docker run -p 8081:8081 -e PORT_SERVER=8081 -e USERNAME_AUTH=inditex-price -e PASSWORD_AUTH=Ca23Wvs212 inditex-ms
 ```
 
 
-# Run Docker inditex-api
+# Ejecutar Docker `inditex-api`
 
-* Open terminal and move to inditex-ms and run next command line:
+* Abril la terminal y moverse a la raiz de `inditex-api` y ejecutar la siguiente linea de comandos:
 
 ```bash
 docker build --tag 'inditex-api' . 
 ```
 
-* Run image created:
+* Ejecutar la imagen docker `inditex-api`:
   
 **`ip_your_machine`**: ip de su maquina
 ```bash
