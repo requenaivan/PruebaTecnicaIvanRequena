@@ -100,8 +100,9 @@ docker run -p 8081:8081 -e PORT_SERVER=8081 -e USERNAME_AUTH=inditex-price -e PA
 docker build --tag 'inditex-api' . 
 ```
 
-* Run image created: 
-**ip_your_machine**: ip de su maquina
+* Run image created:
+  
+**`ip_your_machine`**: ip de su maquina
 ```bash
 docker run -p 8080:8080 -e USERNAME_AUTH=inditex-price -e PASSWORD_AUTH=Ca23Wvs212 -e URL_BASE_INDITEX_MS=http://{{ip_your_machine}}:8081/inditex-ms inditex-api
 ```
