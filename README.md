@@ -74,6 +74,10 @@ inditex-ms/inditex-ms-test/build/reports/tests/test/index.html
 ./gradlew build 
 ```
 
+# Run locally
+Open project in your IDE, and find class Application and run, in this case run with `application.properties` because the `application-prod.properties` is used by docker o run in production environment with parameters custom.
+
+
 # Run Docker inditex-ms
 
 * Open terminal and move to inditex-ms and run next command line:
@@ -101,3 +105,4 @@ docker build --tag 'inditex-api' .
 ```bash
 docker run -p 8080:8080 -e USERNAME_AUTH=inditex-price -e PASSWORD_AUTH=Ca23Wvs212 -e URL_BASE_INDITEX_MS=http://{{ip_your_machine}}:8081/inditex-ms inditex-api
 ```
+
