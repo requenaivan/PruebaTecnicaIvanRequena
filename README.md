@@ -14,6 +14,10 @@ Solucion planteada separando la responsabilidad de los microservicios y mantenie
 }
 ```
 
+### Microservicios
+
+Se crearon dos microservicios cada uno con una responsabilidad con el fin de usar la arquitectura orientada a microservicios:
+
 * **`inditex-api`**: Microservicio encargado de recibir todas las peticiones de los clientes actua como un api-layer
 
 * **`inditex-ms`**: Microservicio encargado de manejar la conexion a la base de datos y realizar logica de negocio
@@ -22,6 +26,7 @@ Podrian exisitir otros microservicios como orquestadores que reciban informacion
 
 ![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/Diagrama.png?raw=true)
 
+## Base de datos
 La base de datos se modelo de la siguiente manera:
 
 ##### `currency`: Tabla encargada de almacenar las posibles monedas soportadas por inditex
@@ -32,16 +37,16 @@ La base de datos se modelo de la siguiente manera:
 
 ## Servicio
 
-Se expuso un servicio de tipo `GET` para obtener el recurso de un producto basado en los filtros mencionados en el enunciado estos valores deben ser obligatorios, se versiono el endpoint con el fin de que pueda agregar una nueva version con nuevos datos o filtros sin alterar el actual.
+En cada microservicio se expuso un servicio para poder resolver el enunciado, para esto, se construyo un servicio de tipo `GET` para obtener el recurso de un producto basado en los filtros mencionados en el enunciado estos valores deben ser obligatorios, se versiono el endpoint con el fin de que pueda agregar una nueva version con nuevos datos o filtros sin alterar el actual.
 
 * **Consumo**
-Con el siguiente curl se puede consumir directamente al API, este no contiene seguridad ya que en el apartado de seguridad se informa que se colocaria una mejor seguridad (cognito)
+Con el siguiente curl se puede consumir directamente al API(`inditex-api`), este no contiene seguridad ya que en el apartado de seguridad se informa que se colocaria una mejor seguridad (cognito)
 
 ```bash
 curl 'http://{{domain}}:{{port}}/v1/prices?product_id=35455&brand_id=12&application_date=2020-06-14-16.00.00'
 ```
 
-Si se desea consumir el servicio del inditex-ms se debe tener en cuenta que este contiene seguridad
+* Si se desea consumir el servicio del `inditex-ms` se debe tener en cuenta que este contiene seguridad
 
 ```bash
 curl 'http://{{domain}}:{{port}}/inditex-ms/v1/prices?product_id=35455&brand_id=1&application_date=2020-06-14-16.00.00' \
