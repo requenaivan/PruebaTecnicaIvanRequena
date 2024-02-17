@@ -110,6 +110,7 @@ inditex-ms/inditex-ms-test/build/reports/tests/test/index.html
 # Ejecutar de manera local
 Importar por separado cada carpeta(`inditex-ms` y `inditex-api`) en su IDE preferido y buscar las clases Application y ejecutarlas desde el run del IDE, en esta ejecución busca el archivo  `application.properties` porque el `application-prod.properties` es usado para dockerizar el proyecto o correrlo en ambiente productivo.
 
+![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/run_app.png?raw=true)
 
 # Ejecutar Docker `inditex-ms`
 
