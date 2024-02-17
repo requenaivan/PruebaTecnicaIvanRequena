@@ -18,6 +18,10 @@ Solucion planteada separando la responsabilidad de los microservicios y mantenie
 
 * **`inditex-ms`**: Microservicio encargado de manejar la conexion a la base de datos y realizar logica de negocio
 
+Podrian exisitir otros microservicios como orquestadores que reciban informacion para actualizar precios de los microservicio en ese caso se crearia otro que se comunicaria al inditex-ms ya sea por http o algun broker de mensajeria como kafka o sqs.
+
+![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/Diagrama.png?raw=true)
+
 La base de datos se modelo de la siguiente manera:
 
 ##### `currency`: Tabla encargada de almacenar las posibles monedas soportadas por inditex
@@ -25,10 +29,6 @@ La base de datos se modelo de la siguiente manera:
 ##### `product`: Tabla encargada de almacenar los productos que ofrece las marcas de inditex y su relacion a que moneda se ofrece
 
  ![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/bd.png?raw=true)
-
-Podrian exisitir otros microservicios como orquestadores que reciban informacion para actualizar precios de los microservicio en ese caso se crearia otro que se comunicaria al inditex-ms ya sea por http o algun broker de mensajeria como kafka o sqs.
-
-![](https://github.com/requenaivan/PruebaTecnicaIvanRequena/blob/main/Diagrama.png?raw=true)
 
 ## Servicio
 
