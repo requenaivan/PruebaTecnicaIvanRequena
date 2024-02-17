@@ -1,0 +1,44 @@
+package com.inditex.zwift.controller.v1;
+
+import constant.Route;
+import com.inditex.zwift.manager.PriceManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import response.PriceResponseDTO;
+
+import java.time.LocalDateTime;
+
+@RestController
+public class PriceController {
+    private Logger logger = LoggerFactory.getLogger(PriceController.class);
+
+    private PriceManager priceManager;
+
+    public PriceController(PriceManager priceManager) {
+        this.priceManager = priceManager;
+    }
+
+    /**
+     * Endpoint para la consulta de los datos del modelo por fecha de aplicación,
+     * identificador de producto, cadena y hora de consulta
+     *
+     * @param productId       id de producto
+     * @param applicationDate fecha de aplicacion
+     * @param brandId         id de la marca
+     * @return PriceDTO
+     */
+    @GetMapping(value = {Route.PRICES})
+    private PriceResponseDTO getPrices(
+            @RequestParam(value = "product_id", required = false) Integer productId,
+            @RequestParam(value = "application_date", required = false)
+            @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime applicationDate,
+            @RequestParam(value = "brand_id", required = false) Integer brandId){
+        logger.info("PriceController:getPrices --productId:{} --applicationDate:{} " +
+                        "--brandId:{}", productId, applicationDate, brandId);
+        return priceManager.getPricesByFilter(productId, applicationDate, brandId);
+    }
+}
