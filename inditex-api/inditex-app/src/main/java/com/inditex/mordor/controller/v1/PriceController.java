@@ -31,10 +31,10 @@ public class PriceController {
      */
     @GetMapping(value = {Route.PRICES})
     private PriceDTO getPrices(
-            @RequestParam(value = "product_id", required = true) Integer productId,
-            @RequestParam(value = "application_date", required = true)
+            @RequestParam(value = "product_id", required = false) Integer productId,
+            @RequestParam(value = "application_date", required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime applicationDate,
-            @RequestParam(value = "brand_id", required = true) Integer brandId){
+            @RequestParam(value = "brand_id", required = false) Integer brandId){
         logger.info("PriceController:getPrices --productId:{} --applicationDate:{} " +
                         "--brandId:{}", productId, applicationDate, brandId);
         return priceManager.getPricesByFilter(productId, applicationDate, brandId);

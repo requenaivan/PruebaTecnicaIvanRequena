@@ -1,7 +1,7 @@
 package com.inditex.mordor.client.configuration;
 
 import com.google.gson.Gson;
-import com.inditex.mordor.common.exception.ErrorCode;
+import com.inditex.mordor.common.exception.Error;
 import com.inditex.mordor.common.exception.InditexApiException;
 import com.inditex.mordor.common.response.ExternalErrorResponse;
 import feign.Response;
@@ -26,7 +26,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
                 ExternalErrorResponse error = new Gson().fromJson(body.toString(), ExternalErrorResponse.class);
                 return new InditexApiException(error.code(), mapHttStatus(response.status()), error.message());
             } catch (Exception e) {
-                return new InditexApiException(ErrorCode.INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR, new Throwable(body));
+                return new InditexApiException(Error.INTERNAL_SERVER_ERROR.getCode(), HttpStatus.INTERNAL_SERVER_ERROR, new Throwable(body));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

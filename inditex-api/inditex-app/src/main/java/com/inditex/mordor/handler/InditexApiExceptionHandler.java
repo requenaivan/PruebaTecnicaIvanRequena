@@ -1,6 +1,6 @@
 package com.inditex.mordor.handler;
 
-import com.inditex.mordor.common.exception.ErrorCode;
+import com.inditex.mordor.common.exception.Error;
 import com.inditex.mordor.common.exception.InditexApiException;
 import com.inditex.mordor.common.response.InditexApiExceptionResponse;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class InditexApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     private ResponseEntity<InditexApiExceptionResponse> allExceptions(Exception exception) {
-        InditexApiExceptionResponse response = new InditexApiExceptionResponse(ErrorCode.INTERNAL_SERVER_ERROR, "INTERNAL_SERVER", exception.getMessage());
+        InditexApiExceptionResponse response = new InditexApiExceptionResponse(Error.INTERNAL_SERVER_ERROR.getCode(), Error.INTERNAL_SERVER_ERROR.getName(), exception.getMessage());
 
         logger.error("--inditex-api --InditexApiExceptionHandler:AllException --code: [{}] --message [{}] --status [{}]",
                 response.message(), response.message(), exception.getMessage());

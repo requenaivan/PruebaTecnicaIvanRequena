@@ -74,7 +74,7 @@ public class PriceControllerTest {
 
     @Test
     @DisplayName("Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)")
-    public void getPricesByFilters10AM() throws Exception {
+    public void getPricesByFilters10AMTest() throws Exception {
         String path = Route.PRICES;
         Integer brandId = 1;
         String appDate = "2020-06-14-10.00.00";
@@ -95,7 +95,7 @@ public class PriceControllerTest {
 
     @Test
     @DisplayName("Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA)")
-    public void getPricesByFilters16AM() throws Exception {
+    public void getPricesByFilters16AMTest() throws Exception {
         String path = Route.PRICES;
         Integer brandId = 1;
         String appDate = "2020-06-14-16.00.00";
@@ -116,7 +116,7 @@ public class PriceControllerTest {
 
     @Test
     @DisplayName("Test 3: petición a las 21:00 del día 14 del producto 35455   para la brand 1 (ZARA)")
-    public void getPricesByFilters21PM() throws Exception {
+    public void getPricesByFilters21PMTest() throws Exception {
         String path = Route.PRICES;
         Integer brandId = 1;
         String appDate = "2020-06-14-21.00.00";
@@ -137,7 +137,7 @@ public class PriceControllerTest {
 
     @Test
     @DisplayName("Test 4: petición a las 10:00 del día 15 del producto 35455   para la brand 1 (ZARA)")
-    public void getPricesByFilters10AMDay15() throws Exception {
+    public void getPricesByFilters10AMDay15Test() throws Exception {
         String path = Route.PRICES;
         Integer brandId = 1;
         String appDate = "2020-06-15-10.00.00";
@@ -158,13 +158,12 @@ public class PriceControllerTest {
 
     @Test
     @DisplayName("Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)")
-    public void getPricesByFilters21PMDay16() throws Exception {
+    public void getPricesByFilters21PMDay16Test() throws Exception {
         String path = Route.PRICES;
         Integer brandId = 1;
         String appDate = "2020-06-16-21.00.00";
         Integer productId = 35455;
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_21_00_day_16_brand_1_product_35455.json")));
-        String responseHandler = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/response_handler_not_found_product.json")));
         ResultActions result= mvc.perform(get(path)
                 .header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
@@ -174,7 +173,7 @@ public class PriceControllerTest {
         String contentResponse = result.andReturn().getResponse().getContentAsString();
         PriceResponseDTO prices = gson.fromJson(contentResponse, PriceResponseDTO.class);
         Assertions.assertNotNull(prices);
-        result.andExpect(status().is4xxClientError());
+        result.andExpect(status().isOk());
         result.andExpect(MockMvcResultMatchers.content().json(response));
     }
 }
