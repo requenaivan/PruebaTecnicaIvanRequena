@@ -89,7 +89,6 @@ public class PriceControllerTest {
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_10_00_day_14_brand_1_product_35455.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
@@ -111,7 +110,6 @@ public class PriceControllerTest {
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_16_00_day_14_brand_1_product_35455.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
@@ -133,7 +131,6 @@ public class PriceControllerTest {
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_21_00_day_14_brand_1_product_35455.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
@@ -155,7 +152,6 @@ public class PriceControllerTest {
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_10_00_day_15_brand_1_product_35455.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
@@ -177,7 +173,6 @@ public class PriceControllerTest {
         String response = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/get_price_21_00_day_16_brand_1_product_35455.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
@@ -200,7 +195,6 @@ public class PriceControllerTest {
         String responseHandler = IOUtils.toString(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("response/response_handler_not_found_product.json")));
         getPriceMock(HttpStatusCode.OK_200, brandId, productId, appDate,  mockServerClient, response );
         ResultActions result= mvc.perform(get(path)
-                //.header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
                 .queryParam("brand_id", brandId.toString())
                 .queryParam("application_date", appDate)
                 .queryParam("product_id", productId.toString())
